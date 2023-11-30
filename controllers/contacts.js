@@ -69,3 +69,4 @@ module.exports = {
   updateContact: ctrlWrapper(updateContact),
   updateFavorite: ctrlWrapper(updateFavorite),
 };
+// 
