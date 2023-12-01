@@ -6,10 +6,12 @@ const {
   logout,
   getCurrent,
   changeSubscription,
+  changeAvatar,
 } = require("../../controllers/users");
 
 const { validateBody } = require("../../middlewares/validateBody");
 const isValidToken = require("../../middlewares/isValidToken");
+const upload = require("../../middlewares/upload");
 
 const { schema } = require("../../models/user");
 
@@ -22,6 +24,8 @@ router.post("/login", validateBody(schema.authSchema), login);
 router.post("/logout", isValidToken, logout);
 
 router.get("/current", isValidToken, getCurrent);
+
+router.patch("/avatars", isValidToken, upload.single("avatar"), changeAvatar);
 
 router.patch(
   "/",
